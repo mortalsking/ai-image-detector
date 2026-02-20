@@ -17,6 +17,10 @@ classifier = pipeline(
 
 labels = ["real photograph", "AI generated image"]
 
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({"message": "AI Image Detector API is running!", "endpoint": "/analyze"})
+
 @app.route("/analyze", methods=["POST"])
 def analyze():
     file = request.files["file"]
@@ -35,5 +39,5 @@ def analyze():
     })
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 7860))
     app.run(host="0.0.0.0", port=port)
