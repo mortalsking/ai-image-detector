@@ -81,12 +81,6 @@ python app.py
 
 ---
 
-## 📜 License
-
-MIT License
-
----
-
 ## 👨‍💻 Author
 
 Phoenix - Prathmesh , Bhushan , Shreyas , Shravan
