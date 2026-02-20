@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 
 from transformers import pipeline
 from PIL import Image
 
 app = Flask(__name__)
+CORS(app) # Enable CORS for all routes
+
 
 # Load CLIP zero-shot classifier
 classifier = pipeline(
