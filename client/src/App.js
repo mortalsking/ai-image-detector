@@ -14,8 +14,9 @@ function App() {
 
     try {
       setLoading(true);
+      const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:4000/upload";
       const response = await axios.post(
-        "http://localhost:4000/upload",
+        apiUrl,
         formData
       );
       setResult(response.data);

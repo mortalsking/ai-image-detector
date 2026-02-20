@@ -18,10 +18,11 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     formData.append("file", fs.createReadStream(filePath));
 
     const response = await axios.post(
-      "http://127.0.0.1:5000/analyze",
+      process.env.ML_SERVICE_URL || "http://127.0.0.1:5000/analyze",
       formData,
       { headers: formData.getHeaders() }
     );
+
 
     res.json(response.data);
 
@@ -31,6 +32,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 });
 
-app.listen(4000, () => {
-  console.log("Server running on port 4000");
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
